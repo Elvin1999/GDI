@@ -28,7 +28,7 @@ namespace GDI
 
             for (int i = 0; i < 3; i++)
             {
-                point = new Point(i + 30, i + 30);
+                point = new Point(i*2 + 30, i*2 + 30);
                 points.Add(point);
             }
             var item = comboBoxFigure.SelectedItem.ToString();
@@ -142,7 +142,29 @@ namespace GDI
 
                         }
                     }
+                    else if (item is TriAngle tr)
+                    {
+                        if (tr.IsFilled)
+                        {
+                            a.FillPolygon(brush, points.ToArray());
+                        }
+                        else
+                        {
+                            a.DrawPolygon(pen, points.ToArray());
+                        }
+                    }
+                    else if(item is Rectangle rt)
+                    {
+                        if (rt.IsFilled)
+                        {
+                            a.FillRectangle(brush, rt.Point.X, rt.Point.Y, rt.Size.Width, rt.Size.Height);
+                        }
+                        else
+                        {
+                            a.DrawRectangle(pen, rt.Point.X, rt.Point.Y, rt.Size.Width, rt.Size.Height);
 
+                        }
+                    }
 
 
                 }
