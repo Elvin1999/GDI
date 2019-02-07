@@ -59,24 +59,35 @@ namespace GDI
         int check = 0;
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            if (comboBoxFigure.SelectedItem != null&& IsSelectedComboBox)
+            if (comboBoxFigure.SelectedItem != null && IsSelectedComboBox)
             {
-                
+                Pen pen = new Pen(FigureColor);
+                Brush brush = new SolidBrush(FigureColor);
                 using (var a = e.Graphics)
                 {
                     if (FigureFactory.GetFigure() is TriAngle tr)
                     {
-                        Pen pen = new Pen(FigureColor);
+                        
                     }
                     else if (FigureFactory.GetFigure() is Rectangle rt)
                     {
-                        Pen pen = new Pen(FigureColor);
-                        a.DrawRectangle(pen,point.X,point.Y, int.Parse(textBoxWidth.Text)
-                            , int.Parse(textBoxHeight.Text));
+
+
+                        if (radioButtonFill.Checked)
+                        {
+                            a.FillRectangle(brush, point.X, point.Y, int.Parse(textBoxWidth.Text)
+                                                       , int.Parse(textBoxHeight.Text));
+                        }
+                        else
+                        {
+                            a.DrawRectangle(pen, point.X, point.Y, int.Parse(textBoxWidth.Text)
+                                                       , int.Parse(textBoxHeight.Text));
+                        }
+
                     }
                     else if (FigureFactory.GetFigure() is Circle cr)
                     {
-                        Pen pen = new Pen(FigureColor);
+
                     }
                 }
             }
