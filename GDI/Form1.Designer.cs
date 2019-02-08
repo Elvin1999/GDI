@@ -38,6 +38,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.radioButtonFill = new System.Windows.Forms.RadioButton();
             this.radioButtonEmpty = new System.Windows.Forms.RadioButton();
+            this.buttonSave = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // comboBoxFigure
@@ -47,7 +48,7 @@
             this.comboBoxFigure.FormattingEnabled = true;
             this.comboBoxFigure.Location = new System.Drawing.Point(26, 29);
             this.comboBoxFigure.Name = "comboBoxFigure";
-            this.comboBoxFigure.Size = new System.Drawing.Size(121, 27);
+            this.comboBoxFigure.Size = new System.Drawing.Size(121, 26);
             this.comboBoxFigure.TabIndex = 0;
             this.comboBoxFigure.SelectedIndexChanged += new System.EventHandler(this.comboBoxFigure_SelectedIndexChanged);
             // 
@@ -57,7 +58,7 @@
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label1.Location = new System.Drawing.Point(171, 36);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 19);
+            this.label1.Size = new System.Drawing.Size(45, 18);
             this.label1.TabIndex = 1;
             this.label1.Text = "Width";
             // 
@@ -67,7 +68,7 @@
             this.label2.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.label2.Location = new System.Drawing.Point(326, 36);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 19);
+            this.label2.Size = new System.Drawing.Size(48, 18);
             this.label2.TabIndex = 1;
             this.label2.Text = "Height";
             // 
@@ -132,6 +133,17 @@
             this.radioButtonEmpty.Text = "Empty";
             this.radioButtonEmpty.UseVisualStyleBackColor = true;
             // 
+            // buttonSave
+            // 
+            this.buttonSave.Font = new System.Drawing.Font("Comic Sans MS", 9.75F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.buttonSave.Location = new System.Drawing.Point(861, 34);
+            this.buttonSave.Name = "buttonSave";
+            this.buttonSave.Size = new System.Drawing.Size(75, 23);
+            this.buttonSave.TabIndex = 3;
+            this.buttonSave.Text = "Save";
+            this.buttonSave.UseVisualStyleBackColor = true;
+            this.buttonSave.Click += new System.EventHandler(this.buttonSave_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -139,6 +151,7 @@
             this.ClientSize = new System.Drawing.Size(1023, 529);
             this.Controls.Add(this.radioButtonEmpty);
             this.Controls.Add(this.radioButtonFill);
+            this.Controls.Add(this.buttonSave);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.textBoxHeight);
             this.Controls.Add(this.textBoxWidth);
@@ -167,6 +180,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.RadioButton radioButtonFill;
         private System.Windows.Forms.RadioButton radioButtonEmpty;
+        private System.Windows.Forms.Button buttonSave;
     }
 }
 

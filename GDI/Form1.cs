@@ -27,7 +27,7 @@ namespace GDI
             int x3 = x1 + width / 2; int y3 = y2;
             try
             {
-                Point point1= new Point(x1, y1);
+                Point point1 = new Point(x1, y1);
                 Point point2 = new Point(x2, y2);
                 Point point3 = new Point(x3, y3);
                 points.Add(point1);
@@ -88,7 +88,7 @@ namespace GDI
             {
                 tr.Color = FigureColor;
                 tr.Point = e.Location;
-                tr.Size = new Size(100, 100);
+                tr.Size = new Size(int.Parse(textBoxWidth.Text), int.Parse(textBoxHeight.Text));
                 if (radioButtonFill.Checked)
                 {
 
@@ -105,7 +105,7 @@ namespace GDI
 
                 rt.Color = FigureColor;
                 rt.Point = e.Location;
-                rt.Size = new Size(100, 100);
+                rt.Size = new Size(int.Parse(textBoxWidth.Text), int.Parse(textBoxHeight.Text));
                 if (radioButtonFill.Checked)
                 {
                     rt.IsFilled = true;
@@ -122,7 +122,7 @@ namespace GDI
             {
                 cr.Color = FigureColor;
                 cr.Point = e.Location;
-                cr.Size = new Size(100, 100);
+                cr.Size = new Size(int.Parse(textBoxWidth.Text), int.Parse(textBoxHeight.Text));
                 if (radioButtonFill.Checked)
                 {
                     cr.IsFilled = true;
@@ -138,9 +138,9 @@ namespace GDI
             this.Refresh();
         }
         int check = 0;
+        public Graphics Graphics { get; set; }
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-
 
             using (var a = e.Graphics)
             {
@@ -191,6 +191,7 @@ namespace GDI
 
 
                 }
+                Graphics = a;
             }
 
 
@@ -205,6 +206,13 @@ namespace GDI
         private void textBoxY_Enter(object sender, EventArgs e)
         {
             IsSelectedComboBox = true;
+        }
+        int i = 0;
+        private void buttonSave_Click(object sender, EventArgs e)
+        {
+            ++i;
+            Bitmap myBitmap = new Bitmap("Climber.jpg");
+            Graphics.DrawImage(myBitmap, 10, 10);
         }
     }
     interface IFigure
