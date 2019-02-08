@@ -18,8 +18,28 @@ namespace GDI
             InitializeComponent();
             List<string> figures = new List<string>() { "Triangle", "Circle", "Rectangle" };
             comboBoxFigure.Items.AddRange(figures.ToArray());
+        }
+        List<Point> GetPointsForTriAngle(Point point, int width, int height)
+        {
+            List<Point> points = new List<Point>();
+            int x1 = point.X; int y1 = point.Y;
+            int x2 = x1 - width / 2; int y2 = y1 + height;
+            int x3 = x1 + width / 2; int y3 = y2;
+            try
+            {
+                Point point1= new Point(x1, y1);
+                Point point2 = new Point(x2, y2);
+                Point point3 = new Point(x3, y3);
+                points.Add(point1);
+                points.Add(point2);
+                points.Add(point3);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
 
-
+            return points;
         }
         public bool IsSelectedComboBox { get; set; }
         private void comboBoxFigure_SelectedIndexChanged(object sender, EventArgs e)
@@ -28,7 +48,7 @@ namespace GDI
 
             for (int i = 0; i < 3; i++)
             {
-                point = new Point(i*2 + 30, i*2 + 30);
+                point = new Point(i * 2 + 30, i * 2 + 30);
                 points.Add(point);
             }
             var item = comboBoxFigure.SelectedItem.ToString();
@@ -110,7 +130,7 @@ namespace GDI
                 }
                 else
                 {
-
+                    cr.IsFilled = false;
                 }
                 figures.Add(cr);
             }
@@ -144,16 +164,19 @@ namespace GDI
                     }
                     else if (item is TriAngle tr)
                     {
+                        List<Point> points1 = new List<Point>();
+                        points1 = GetPointsForTriAngle(tr.Point, tr.Size.Width, tr.Size.Height);
+
                         if (tr.IsFilled)
                         {
-                            a.FillPolygon(brush, points.ToArray());
+                            a.FillPolygon(brush, points1.ToArray());
                         }
                         else
                         {
-                            a.DrawPolygon(pen, points.ToArray());
+                            a.DrawPolygon(pen, points1.ToArray());
                         }
                     }
-                    else if(item is Rectangle rt)
+                    else if (item is Rectangle rt)
                     {
                         if (rt.IsFilled)
                         {
